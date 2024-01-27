@@ -117,27 +117,7 @@
                               </AnchorPane>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="56.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../Images/statNeutre.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="lblSagesse" layoutX="50.0" layoutY="9.0" text="100" textFill="#4a4926">
-                                       <font>
-                                          <Font name="Arial Bold" size="15.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets bottom="2.0" top="1.0" />
-                                 </HBox.margin>
-                              </AnchorPane>
-                           </children>
-                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -243,18 +223,37 @@
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="209.0" layoutY="50.0" onMouseClicked="#clickGoToZaap" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="apCombatPersonnages" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="imgPersonnage" fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/Classe/cra.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgAdversaire" fitHeight="150.0" fitWidth="200.0" layoutX="396.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/monstreBouftou.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </StackPane>
    </center>
    <bottom>
       <AnchorPane fx:id="apBarreBasse" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="600.0" layoutX="4.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/fond.PNG" />
                </image>
             </ImageView>
-            <HBox fx:id="hbSorts" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0">
+            <ImageView fx:id="imgVitaPerso" fitHeight="50.0" fitWidth="50.0" layoutX="4.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/statVita.png" />
+               </image>
+            </ImageView>
+            <HBox fx:id="hbSorts" alignment="CENTER_RIGHT" layoutX="197.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -290,6 +289,41 @@
                   </ImageView>
                </children>
             </HBox>
+            <ImageView fx:id="imgVitaAdv" fitHeight="50.0" fitWidth="50.0" layoutX="550.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/statVita.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblPVPerso" layoutX="76.0" layoutY="6.0" text="1000">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPVMaxPerso" layoutX="132.0" layoutY="21.0" text="1000">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPVAdv" layoutX="421.0" layoutY="6.0" text="1000">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPVMaxAdv" layoutX="477.0" layoutY="21.0" text="1000">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSlash" layoutX="123.0" layoutY="12.0" text="/">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSlashBis" layoutX="468.0" layoutY="11.0" text="/">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </bottom>

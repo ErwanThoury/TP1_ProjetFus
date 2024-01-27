@@ -8,7 +8,9 @@ public class Monstre {
     private int attaque;
     private int defense;
     private int coupCritique;
-    public Monstre(String unNom, String unImg, int pvMax, int attaque, int defense, int critique){
+    private int kamaGagneMax;
+    private int kamaGagneMin;
+    public Monstre(String unNom, String unImg, int pvMax, int attaque, int defense, int critique, int kamaGagneMin, int kamaGagneMax){
         this.img = unImg;
         this.nom = unNom;
         this.attaque = attaque;
@@ -16,6 +18,8 @@ public class Monstre {
         this.coupCritique = critique;
         this.pvMax = pvMax;
         this.pvActuel = pvMax;
+        this.kamaGagneMin = kamaGagneMin;
+        this.kamaGagneMax = kamaGagneMax;
     }
 
     public String getNom() {
