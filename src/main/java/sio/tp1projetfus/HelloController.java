@@ -3,6 +3,7 @@ package sio.tp1projetfus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -31,6 +32,22 @@ public class HelloController implements Initializable {
     private AnchorPane apMaison;
     @FXML
     private AnchorPane apChoixAction;
+    @FXML
+    private AnchorPane apBarreBasse;
+    @FXML
+    private Label lblVitaMax;
+    @FXML
+    private Label lblSagesse;
+    @FXML
+    private Label lblAir;
+    @FXML
+    private Label lblEau;
+    @FXML
+    private Label lblFeu;
+    @FXML
+    private Label lblTerre;
+    @FXML
+    private ImageView imgPersonnage;
 
     /*
     0 = Astrub
@@ -52,6 +69,7 @@ public class HelloController implements Initializable {
         apZoneMonstre.setVisible(false);
         apChoixAction.setVisible(false);
         apMaison.setVisible(false);
+        apBarreBasse.setVisible(true);
 
     }
     public void clickFuite(MouseEvent mouseEvent) {
@@ -122,10 +140,17 @@ public class HelloController implements Initializable {
     }
 
     public void clickGoToPerso(MouseEvent mouseEvent) {
+        clearAll();
+        apMaison.setVisible(true);
+        apBarreBasse.setVisible(false);
     }
 
     public void clickGoToZaap(MouseEvent mouseEvent) {
         clearAll();
         apAstrub.setVisible(true);
+    }
+
+    public void fight(){
+
     }
 }
