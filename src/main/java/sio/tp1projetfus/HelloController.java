@@ -205,6 +205,8 @@ public class HelloController implements Initializable {
     private AnchorPane apCombatPersonnages;
     @FXML
     private ImageView imgAdversaire;
+    @FXML
+    private ImageView imgPersonnageCbt;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -316,7 +318,7 @@ public class HelloController implements Initializable {
         if (true) {
             clearAll();
             combatAff();
-            imgPersonnage.setImage(imagePerso);
+            imgPersonnageCbt.setImage(imagePerso);
             if (intNumberZone == 1) {
                 apTofu.setVisible(true);
                 m = aleatoireMonstre(monstreTofuMineur, monstreTofu, monstreTofuMajeur);
