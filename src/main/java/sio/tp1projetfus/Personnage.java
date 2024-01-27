@@ -10,6 +10,7 @@ public class Personnage {
     private int statVita;
     private int statVitaMax;
     private int nombreKama;
+    private int critique;
 
     public Personnage(String nom, ClassePerso classeDuPerso) {
         this.nom = nom;
@@ -21,6 +22,7 @@ public class Personnage {
         this.statVita = 50;
         this.nombreKama = 500;
         this.statVitaMax = 50;
+        this.critique = 20;
 
         if ("Iop".equals(classeDuPerso.getNom()) )
         {
