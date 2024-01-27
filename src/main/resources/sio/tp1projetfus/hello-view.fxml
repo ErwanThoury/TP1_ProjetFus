@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sio.tp1projetfus.HelloController">
+   <center>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="apCraqueleur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/ZoneCraqueleur.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apTofu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/ZoneTofu.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apBouftou" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                     <image>
+                        <Image url="@../../Images/ZoneBouftou.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apAstrub" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/ZoneMonstre.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="233.0" layoutY="116.0" onMouseClicked="#clickGoToBouftou" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/monstreBouftou.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="116.0" onMouseClicked="#clickGoToTofu" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/monstreTofuMineur.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="199.0" fitWidth="190.0" layoutX="405.0" layoutY="205.0" onMouseClicked="#clickGoToCraqueleur" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/monstreCraqueleur.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apZoneMonstre" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="63.0" fitWidth="75.0" layoutX="300.0" layoutY="181.0" onMouseClicked="#clickGoToBoss" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/couronne.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="165.0" fitWidth="165.0" layoutX="-10.0" layoutY="283.0" onMouseClicked="#clickGoToAlea" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/aleatoire.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="68.0" fitWidth="58.0" layoutY="49.0" onMouseClicked="#clickGoToAstrub" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/potionRappel.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="apMaison" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="apChoixAction" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/zoneChoix.PNG" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="226.0" fitWidth="116.0" layoutX="470.0" layoutY="49.0" onMouseClicked="#clickGoToMarchand" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="106.0" fitWidth="128.0" layoutX="52.0" layoutY="125.0" onMouseClicked="#clickGoToPerso" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="209.0" layoutY="50.0" onMouseClicked="#clickGoToZaap" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </center>
+   <bottom>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <ImageView fitHeight="51.0" fitWidth="600.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/fond.PNG" />
+               </image>
+            </ImageView>
+            <HBox fx:id="hbSorts" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="206.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/combatAttaqueTerre.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/combatDefenseEau.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#clickFuite" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/combatFuiteAir.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/combatSoinFeu.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
