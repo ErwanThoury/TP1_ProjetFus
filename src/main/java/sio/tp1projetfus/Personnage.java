@@ -11,6 +11,13 @@ public class Personnage {
     private int statVitaMax;
     private int nombreKama;
     private int critique;
+    private int attaque;
+    private int fuite;
+    private int esquive;
+    private int soin;
+    private int defense;
+    private int prospection;
+
 
     public Personnage(String nom, ClassePerso classeDuPerso) {
         this.nom = nom;
@@ -19,10 +26,17 @@ public class Personnage {
         this.statTerre = 5;
         this.statFeu = 5;
         this.statEau = 5;
-        this.statVita = 50;
+        this.statVita = 30;
         this.nombreKama = 500;
         this.statVitaMax = 50;
         this.critique = 20;
+        this.fuite = 20;
+        this.esquive = 5;
+        this.prospection = 100;
+        this.attaque = 0;
+        this.defense = 0;
+        this.soin = 5;
+
 
         if ("Iop".equals(classeDuPerso.getNom()) )
         {
@@ -62,6 +76,36 @@ public class Personnage {
             this.statTerre += 4;
             this.statEau -= 4;
         }
+        majStat();
+        this.statVita = statVitaMax;
+    }
+
+    public int getCritique() {
+        return critique;
+    }
+
+    public int getAttaque() {
+        return attaque;
+    }
+
+    public int getFuite() {
+        return fuite;
+    }
+
+    public int getEsquive() {
+        return esquive;
+    }
+
+    public int getSoin() {
+        return soin;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getProspection() {
+        return prospection;
     }
 
     public String getNom() {
@@ -98,5 +142,80 @@ public class Personnage {
 
     public int getNombreKama() {
         return nombreKama;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setClasseDuPerso(ClassePerso classeDuPerso) {
+        this.classeDuPerso = classeDuPerso;
+    }
+
+    public void setStatAir(int statAir) {
+        this.statAir = statAir;
+    }
+
+    public void setStatTerre(int statTerre) {
+        this.statTerre = statTerre;
+    }
+
+    public void setStatFeu(int statFeu) {
+        this.statFeu = statFeu;
+    }
+
+    public void setStatEau(int statEau) {
+        this.statEau = statEau;
+    }
+
+    public void setStatVita(int statVita) {
+        this.statVita = statVita;
+    }
+
+    public void setStatVitaMax(int statVitaMax) {
+        this.statVitaMax = statVitaMax;
+    }
+
+    public void setNombreKama(int nombreKama) {
+        this.nombreKama = nombreKama;
+    }
+
+    public void setCritique(int critique) {
+        this.critique = critique;
+    }
+
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+
+    public void setFuite(int fuite) {
+        this.fuite = fuite;
+    }
+
+    public void setEsquive(int esquive) {
+        this.esquive = esquive;
+    }
+
+    public void setSoin(int soin) {
+        this.soin = soin;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setProspection(int prospection) {
+        this.prospection = prospection;
+    }
+
+    public void majStat()
+    {
+        this.statVitaMax += this.statFeu * 2 + this.statAir * 0.5 + this.statTerre * 0.5 + this.statEau * 0.5;
+        this.fuite += this.statAir * 1.5 + this.statFeu * 0.5 + this.statTerre * 0.5 + this.statEau * 0.5;
+        this.esquive += this.statAir * 0.5;
+        this.soin += this.statFeu * 1.5;
+        this.prospection += this.statEau * 2;
+        this.attaque += this.statTerre * 1.5 + this.statAir * 0.5 + this.statEau * 0.5 + this.statFeu * 0.5;
+        this.defense += this.statEau * 1.2 + this.statAir * 0.2 + this.statTerre * 0.2 + this.statFeu * 0.2;
     }
 }

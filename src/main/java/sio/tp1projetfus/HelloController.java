@@ -1,13 +1,21 @@
 package sio.tp1projetfus;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.Random;
@@ -150,25 +158,23 @@ public class HelloController implements Initializable {
     //---------------------------------------------------------------------------------
     // CLASSES
     //---------------------------------------------------------------------------------
-    ClassePerso iop = new ClassePerso("Iop", "iop.png");
-    ClassePerso eniripsa = new ClassePerso("Eniripsa", "eniripsa.png");
-    ClassePerso osamodas = new ClassePerso("Osamodas", "osamodas.png");
-    ClassePerso feca = new ClassePerso("Feca", "feca.png");
-    ClassePerso sacrieur = new ClassePerso("Sacrieur", "sacrieur.png");
-    ClassePerso cra = new ClassePerso("Cra", "cra.png");
-    ClassePerso sadida = new ClassePerso("Sadida", "sadida.png");
-    ClassePerso enutrof = new ClassePerso("Enutrof", "enutrof.png");
-    ClassePerso sram = new ClassePerso("Sram", "sram.png");
-    ClassePerso xelor = new ClassePerso("Xelor", "xelor.png");
-    ClassePerso ecaflip = new ClassePerso("Ecaflip", "ecaflip.png");
-    ClassePerso pandawa = new ClassePerso("Pandawa", "pandawa.png");
+    ClassePerso iop = new ClassePerso("Iop", "iop.png", "Les Iops sont des guerriers fonceurs et sans reproche ! Une chose est sûre : les Iops savent faire parler les armes. D'ailleurs, se retrouver pris dans une bagarre au moins une fois par jour est pour eux un signe de bonne santé. Leur tempérament impétueux fait des Iops des paladins de l'extrême, capables du meilleur... comme du pire !", "Terre", "Feu");
+    ClassePerso eniripsa = new ClassePerso("Eniripsa", "eniripsa.png", "Les Eniripsas sont des guérisseurs qui soignent d'un simple Mot. Ils utilisent le pouvoir de la parole pour soulager les souffrances de leurs alliés, mais parfois aussi pour blesser leurs ennemis. Certains Eniripsas sont même devenus de véritables arpenteurs du verbe, des rôdeurs des langues oubliées.", "Feu", "Terre");
+    ClassePerso osamodas = new ClassePerso("Osamodas", "osamodas.png", "Les Osamodas sont des dompteurs nés ! Ils ont le pouvoir d'invoquer des créatures et sont de remarquables dresseurs. Une rumeur prétend qu'ils taillent leurs vêtements dans la peau de leurs ennemis, mais allez donc leur demander ce qu'il en est… Si vous êtes de son côté, un Osamodas sera aux petits soins pour vous. Dans le cas contraire, peut-être terminerez-vous votre vie sous la forme d'une botte ou d'un bonnet fourré.", "Feu", "Eau");
+    ClassePerso feca = new ClassePerso("Feca", "feca.png", "Les Fécas sont de loyaux protecteurs toujours sur la défensive. Ils sont appréciés dans les groupes d'aventuriers pour leurs armures élémentaires et leur capacité à encaisser les coups durs. Ils sont également maîtres dans l’art des signes magiques : quand il va y avoir du grabuge, les Fécas sortent leurs glyphes !", "Eau", "Terre");
+    ClassePerso sacrieur = new ClassePerso("Sacrieur", "sacrieur.png", "Les Sacrieurs sont des berserkers qui décuplent leurs forces dès qu'ils sont frappés ! N'ayant pas peur de recevoir des coups, ni de s'exposer aux blessures, ils seront souvent en première ligne, prêts à verser le premier sang ! Le Sacrieur est vraiment le compagnon idéal pour vos longues soirées guerrières…", "Terre", "Eau");
+    ClassePerso cra = new ClassePerso("Cra", "cra.png", "Les Crâs sont des archers aussi fiers que précis ! Ils font des alliés précieux contre les adeptes de la mêlée franche. Restant à distance, décochant leurs traits empennés dans le moindre orifice laissé sans surveillance, ils ne laissent aucun répit à leurs adversaires !", "Air", "Eau");
+    ClassePerso sadida = new ClassePerso("Sadida", "sadida.png", "Les Sadidas sont des invocateurs qui empoisonnent la vie de leurs ennemis ! Apprivoiser les Ronces pour en faire des armes terrifiantes, confectionner des poupées de guerre et de soins, voilà qui satisfait tout disciple Sadida digne de ce nom.", "Feu", "Terre");
+    ClassePerso enutrof = new ClassePerso("Enutrof", "enutrof.png", "Les Enutrofs sont des chasseurs de trésor avides de kamas, qui malgré leur grand âge courent comme des dragodindes à la vue d'un coffre bien rempli. Ils sont experts dans l’art de ralentir leurs ennemis : ils peuvent ainsi les harceler avant de les assommer à grands coups de pelle le moment venu !", "Eau", "Air");
+    ClassePerso sram = new ClassePerso("Sram", "sram.png", "Les Srams sont des assassins qui aiment les bourses, rebondies de préférence. Trousser les pans d'une tunique, tâter le fond d'une poche, faire preuve de doigté, palper enfin des bijoux tant convoités avant de poser un piège ou d'asséner un coup mortel, voilà la vie d'un disciple de Sram !", "Air", "Feu");
+    ClassePerso xelor = new ClassePerso("Xelor", "xelor.png", "Les Xélors sont des mages qui maîtrisent le temps et toutes les mécaniques qui donnent l'heure : carillons, horloges, et pendules leur obéissent au doigt et à l'œil. Les Xélors jouent donc avec le temps pour ralentir un ennemi ou se téléporter où bon leur semble.", "Air", "Feu");
+    ClassePerso ecaflip = new ClassePerso("Ecaflip", "ecaflip.png", "Les Ecaflips sont des guerriers joueurs qui se fourrent dans les endroits où l'on peut gagner gros, et perdre beaucoup… Un Ecaflip bien dans sa peau parie sans arrêt, pour tout et pour rien. Mais attention, il prend le jeu très au sérieux et ira même jusqu'à risquer sa vie sur un jet de dés pour tenter de remporter la mise…", "Terre", "Air");
+    ClassePerso pandawa = new ClassePerso("Pandawa", "pandawa.png", "Les Pandawas sont des guerriers adeptes des arts martiaux qui savent faire des folies de leurs corps ! Ils peuvent même en faire avec le corps des autres… Le Pandawa sait comment soulever les foules, il porte ses alliés sur ses épaules pour mieux les protéger. Quant à ses ennemis, il les enverra valser dans le décor, avant de fêter sa victoire avec une bonne rasade de lait de bambou !", "Eau", "Air");
     //---------------------------------------------------------------------------------
     @FXML
     private AnchorPane apMaison;
     @FXML
     private AnchorPane apChoixAction;
-    @FXML
-    private AnchorPane apBarreBasse;
     @FXML
     private Label lblVitaMax;
     @FXML
@@ -183,6 +189,7 @@ public class HelloController implements Initializable {
     private ImageView imgPersonnage;
 
     Personnage p;
+    ClassePerso c;
     Image imagePerso;
     @FXML
     private Label lblPVPerso;
@@ -207,14 +214,64 @@ public class HelloController implements Initializable {
     private ImageView imgAdversaire;
     @FXML
     private ImageView imgPersonnageCbt;
+    @FXML
+    private StackPane apBarreBasse;
+    @FXML
+    private TextArea txtClasses;
+    @FXML
+    private ImageView imgLogoClasse;
+    @FXML
+    private ListView lvClasses;
+    @FXML
+    private ImageView imgBonusStat;
+    @FXML
+    private ImageView imgMalusStat;
+    @FXML
+    private ImageView imgClasseChoix;
+    @FXML
+    private TextField txtNomPerso;
+    @FXML
+    private AnchorPane apChoix;
+    @FXML
+    private Label lblVita;
+    @FXML
+    private Label lblSoin;
+    @FXML
+    private Label lblFuite;
+    @FXML
+    private Label lblEsquive;
+    @FXML
+    private Label lblDef;
+    @FXML
+    private Label lblProspection;
+    @FXML
+    private Label lblAttaque;
+    @FXML
+    private Label lblCritique;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clearAll();
+        apChoix.setVisible(true);
+
+        lvClasses.getItems().add("Sram");
+        lvClasses.getItems().add("Iop");
+        lvClasses.getItems().add("Cra");
+        lvClasses.getItems().add("Feca");
+        lvClasses.getItems().add("Pandawa");
+        lvClasses.getItems().add("Xelor");
+        lvClasses.getItems().add("Sadida");
+        lvClasses.getItems().add("Osamodas");
+        lvClasses.getItems().add("Sacrieur");
+        lvClasses.getItems().add("Eniripsa");
+        lvClasses.getItems().add("Enutrof");
+        lvClasses.getItems().add("Ecaflip");
+    }
+    public void onClickCreatePerso(MouseEvent mouseEvent) {
+        p = new Personnage(txtNomPerso.getText(), c);
+        clearAll();
         apChoixAction.setVisible(true);
-         p = new Personnage("Bison", sacrieur);
-         //String cheminVersClasse = getClass().getResource("/Images/Classe/"+p.getClasseDuPerso().getLogoURL()).toExternalForm();
-         imagePerso = new Image(getClass().getResource("/Images/Classe/"+p.getClasseDuPerso().getLogoURL()).toExternalForm());
+        imagePerso = new Image(getClass().getResource("/Images/Classe/" + p.getClasseDuPerso().getLogoURL()).toExternalForm());
     }
     public void clearAll(){
         apBouftou.setVisible(false);
@@ -226,11 +283,13 @@ public class HelloController implements Initializable {
         apChoixAction.setVisible(false);
         apMaison.setVisible(false);
         apBarreBasse.setVisible(true);
+        apChoix.setVisible(false);
         combatClear();
 
+
+
     }
-    public void combatClear()
-    {
+    public void combatClear() {
         lblPVAdv.setVisible(false);
         lblPVMaxAdv.setVisible(false);
         lblPVPerso.setVisible(false);
@@ -242,8 +301,7 @@ public class HelloController implements Initializable {
         hbSorts.setVisible(false);
         apCombatPersonnages.setVisible(false);
     }
-    public void combatAff()
-    {
+    public void combatAff() {
         lblPVAdv.setVisible(true);
         lblPVMaxAdv.setVisible(true);
         lblPVPerso.setVisible(true);
@@ -293,8 +351,7 @@ public class HelloController implements Initializable {
     {
         return (int)(Math.random() * 101);  // 0 to 100
     }
-    public Monstre aleatoireMonstre(Monstre m1, Monstre m2, Monstre m3)
-    {
+    public Monstre aleatoireMonstre(Monstre m1, Monstre m2, Monstre m3) {
         Monstre m;
         int randomNumber = alea();
 
@@ -355,13 +412,20 @@ public class HelloController implements Initializable {
     public void clickGoToPerso(MouseEvent mouseEvent) {
         clearAll();
         apMaison.setVisible(true);
-        apBarreBasse.setVisible(false);
         lblAir.setText(Integer.toString((p.getStatAir())));
         lblTerre.setText(Integer.toString((p.getStatTerre())));
         lblFeu.setText(Integer.toString((p.getStatFeu())));
         lblEau.setText(Integer.toString((p.getStatEau())));
         lblVitaMax.setText(Integer.toString((p.getStatVitaMax())));
+        lblVita.setText(Integer.toString((p.getStatVita())));
         imgPersonnage.setImage(imagePerso);
+        lblDef.setText((Integer.toString(p.getDefense())));
+        lblAttaque.setText(Integer.toString(p.getAttaque()));
+        lblCritique.setText(Integer.toString(p.getCritique()));
+        lblFuite.setText(Integer.toString(p.getFuite()));
+        lblEsquive.setText(Integer.toString(p.getEsquive()));
+        lblProspection.setText(Integer.toString(p.getProspection()));
+        lblSoin.setText(Integer.toString(p.getSoin()));
     }
 
     public void clickGoToZaap(MouseEvent mouseEvent) {
@@ -372,4 +436,61 @@ public class HelloController implements Initializable {
     public void fight(){
 
     }
+    public void setClasse(ClassePerso classe) {
+
+        Image imageLogo = new Image(getClass().getResource("/Images/Logo/" + classe.getLogoURL()).toExternalForm());
+        Image imageBonus = new Image(getClass().getResource("/Images/stat" + classe.getBonus() + ".png").toExternalForm());
+        Image imageMalus = new Image(getClass().getResource("/Images/stat" + classe.getMalus() + ".png").toExternalForm());
+        Image imagePerso = new Image(getClass().getResource("/Images/Classe/" + classe.getLogoURL()).toExternalForm());
+        txtClasses.setPromptText(classe.getDescription());
+        Font f = new Font("Franklin Gothic Medium", 18);
+        txtClasses.setFont(f);
+        imgLogoClasse.setImage(imageLogo);
+        imgBonusStat.setImage(imageBonus);
+        imgMalusStat.setImage(imageMalus);
+        imgClasseChoix.setImage(imagePerso);
+    }
+    @FXML
+    public void clickChangeClasse(Event event) {
+
+        if ("Iop".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(iop);
+            c = iop;
+        } else if ("Ecaflip".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(ecaflip);
+            c = ecaflip;
+        } else if ("Cra".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(cra);
+            c = cra;
+        } else if ("Eniripsa".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(eniripsa);
+            c = eniripsa;
+        } else if ("Feca".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(feca);
+            c = feca;
+        } else if ("Sadida".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(sadida);
+            c = sadida;
+        } else if ("Pandawa".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(pandawa);
+            c = pandawa;
+        } else if ("Osamodas".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(osamodas);
+            c = osamodas;
+        } else if ("Xelor".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(xelor);
+            c = xelor;
+        } else if ("Sram".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(sram);
+            c = sram;
+        } else if ("Enutrof".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(enutrof);
+            c = enutrof;
+        } else if ("Sacrieur".equals(lvClasses.getSelectionModel().getSelectedItem().toString()) ) {
+            setClasse(sacrieur);
+            c = sacrieur;
+        }
+    }
+
+
 }
