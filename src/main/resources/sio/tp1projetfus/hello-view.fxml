@@ -365,48 +365,78 @@
             </AnchorPane>
             <AnchorPane fx:id="apCombatPersonnages" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <VBox layoutY="150.0" prefHeight="300.0" prefWidth="900.0">
+                  <HBox alignment="CENTER" layoutY="23.0" prefHeight="300.0" prefWidth="900.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="300.0" prefWidth="900.0">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="imgPersonnageCbt" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/Classe/cra.png" />
+                                          <Image url="@../../Images/interfaceChoix.PNG" />
                                        </image>
                                     </ImageView>
-                                    <Label prefHeight="200.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
                                        <font>
-                                          <Font name="System Bold" size="72.0" />
+                                          <Font name="System Bold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblNomDuPersonnage" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="50.0" prefWidth="200.0" text="TEST" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="36.0" />
                                        </font>
                                     </Label>
                                  </children>
-                                 <HBox.margin>
-                                    <Insets right="50.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <ImageView fx:id="imgAdversaire" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../Images/monstreBouftou.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="200.0" prefWidth="200.0" text="- 100" textFill="RED">
-                                       <font>
-                                          <Font name="System Bold" size="72.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </VBox>
+                              </AnchorPane>
+                              <ImageView fx:id="imgPersonnageCbt" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/Classe/cra.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
                            </children>
-                        </HBox>
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/interfaceChoix.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
+                                       <font>
+                                          <Font name="System Bold" size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblNomDuMonstre" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="50.0" prefWidth="284.0" text="Craqueterre monstrueux" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="23.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fx:id="imgAdversaire" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/monstreBouftou.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="apChoix" prefHeight="200.0" prefWidth="200.0">
@@ -466,6 +496,11 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="txtNomPerso" alignment="CENTER" layoutX="598.0" layoutY="345.0" promptText="Insérer un nom" />
+                  <Label fx:id="lblNomClasse" alignment="CENTER" contentDisplay="CENTER" layoutX="596.0" layoutY="371.0" prefHeight="17.0" prefWidth="153.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

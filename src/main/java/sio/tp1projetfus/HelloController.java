@@ -248,6 +248,12 @@ public class HelloController implements Initializable {
     private Label lblAttaque;
     @FXML
     private Label lblCritique;
+    @FXML
+    private Label lblNomClasse;
+    @FXML
+    private Label lblNomDuPersonnage;
+    @FXML
+    private Label lblNomDuMonstre;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -355,9 +361,9 @@ public class HelloController implements Initializable {
         Monstre m;
         int randomNumber = alea();
 
-        if (randomNumber < 30)
+        if (randomNumber < 60)
             m = m1;
-        else if(randomNumber < 60)
+        else if(randomNumber < 90)
             m = m2;
         else
             m = m3;
@@ -392,6 +398,8 @@ public class HelloController implements Initializable {
             imgAdversaire.setImage(imageAdversaire);
             int intPvRestantHero = p.getStatVita();
             int intPvRestantAdvs = m.getPvMax();
+            lblNomDuMonstre.setText(m.getNom());
+            lblNomDuPersonnage.setText(p.getNom());
             writeRapideInt(lblPVPerso, intPvRestantHero);
             writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
             writeRapideInt(lblPVAdv, intPvRestantAdvs);
@@ -449,6 +457,7 @@ public class HelloController implements Initializable {
         imgBonusStat.setImage(imageBonus);
         imgMalusStat.setImage(imageMalus);
         imgClasseChoix.setImage(imagePerso);
+        lblNomClasse.setText(classe.getNom().toUpperCase());
     }
     @FXML
     public void clickChangeClasse(Event event) {
