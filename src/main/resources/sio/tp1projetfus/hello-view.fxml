@@ -22,7 +22,7 @@
          <children>
             <AnchorPane fx:id="apCraqueleur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgCraqueleur" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/ZoneCraqueleur.PNG" />
                      </image>
@@ -31,7 +31,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apTofu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgTofu" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/ZoneTofu.PNG" />
                      </image>
@@ -40,7 +40,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apBouftou" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
+                  <ImageView fx:id="imgBouftou" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0">
                      <image>
                         <Image url="@../../Images/ZoneBouftou.PNG" />
                      </image>
@@ -49,22 +49,22 @@
             </AnchorPane>
             <AnchorPane fx:id="apAstrub" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgZoneMonstre" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/ZoneMonstre.PNG" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="391.0" fitWidth="376.0" layoutX="243.0" layoutY="58.0" onMouseClicked="#clickGoToBouftou" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgMonstreBouftou" fitHeight="391.0" fitWidth="376.0" layoutX="243.0" layoutY="58.0" onMouseClicked="#clickGoToBouftou" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/monstreBouftou.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="405.0" fitWidth="484.0" layoutX="-97.0" layoutY="98.0" onMouseClicked="#clickGoToTofu" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgMonstreTofu" fitHeight="405.0" fitWidth="484.0" layoutX="-97.0" layoutY="98.0" onMouseClicked="#clickGoToTofu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/monstreTofuMineur.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="371.0" fitWidth="369.0" layoutX="511.0" layoutY="231.0" onMouseClicked="#clickGoToCraqueleur" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgMonstreCraqueleur" fitHeight="371.0" fitWidth="369.0" layoutX="511.0" layoutY="231.0" onMouseClicked="#clickGoToCraqueleur" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/monstreCraqueleur.png" />
                      </image>
@@ -73,7 +73,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apZoneMonstre" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="94.0" fitWidth="124.0" layoutX="487.0" layoutY="206.0" onMouseClicked="#clickGoToBoss" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgBoss" fitHeight="94.0" fitWidth="124.0" layoutX="487.0" layoutY="206.0" onMouseClicked="#clickGoToBoss" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/couronne.png" />
                      </image>
@@ -85,7 +85,7 @@
                         </DropShadow>
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="165.0" fitWidth="165.0" layoutY="435.0" onMouseClicked="#clickGoToAlea" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgAleaRencontre" fitHeight="165.0" fitWidth="165.0" layoutY="435.0" onMouseClicked="#clickGoToAlea" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/aleatoire.png" />
                      </image>
@@ -97,7 +97,7 @@
                         </DropShadow>
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="67.0" fitWidth="60.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#clickGoToAstrub" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPotionRappel" fitHeight="67.0" fitWidth="60.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#clickGoToAstrub" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/potionRappel.png" />
                      </image>
@@ -361,7 +361,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apChoixAction" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgZoneAstrub" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/zoneChoix.PNG" />
                      </image>
@@ -537,12 +537,6 @@
          </children>
       </StackPane>
    </center>
-   <top>
-      <ImageView fitHeight="50.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../../Images/barreWindows.png" />
-         </image></ImageView>
-   </top>
    <bottom>
       <StackPane fx:id="apBarreBasse" prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -586,7 +580,7 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickAttaque" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgAttaque" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickAttaque" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatAttaqueTerre.png" />
                      </image>
@@ -601,7 +595,7 @@
                         </DropShadow>
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickDefense" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgDefense" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickDefense" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatDefenseEau.png" />
                      </image>
@@ -616,7 +610,7 @@
                         </DropShadow>
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickFuite" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgFuite" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickFuite" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatFuiteAir.png" />
                      </image>
@@ -631,7 +625,7 @@
                         </DropShadow>
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickSoin" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgSoin" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickSoin" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatSoinFeu.png" />
                      </image>
@@ -684,4 +678,16 @@
          </children>
       </StackPane>
    </bottom>
+   <top>
+      <AnchorPane prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/barreWindows.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#clickChangeVersion" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

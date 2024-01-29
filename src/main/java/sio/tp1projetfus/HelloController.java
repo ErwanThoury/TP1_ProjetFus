@@ -36,7 +36,8 @@ public class HelloController implements Initializable {
     private AnchorPane apAstrub;
     @FXML
     private AnchorPane apZoneMonstre;
-
+    private boolean unPointVingtNeuf;
+    private String deuxPointZero = "";//""deuxPointZero/";
     int intNumberZone = 0;
     /*
     0 = Astrub
@@ -48,7 +49,7 @@ public class HelloController implements Initializable {
     // Tofu
     //---------------------------------------------------------------------------------
     Monstre monstreTofuMineur = new Monstre("Tofu furtif"
-            , "monstreTofuMineur.png"
+            , deuxPointZero+"monstreTofuMineur.png"
             , 10
             , 10
             , 3
@@ -262,11 +263,42 @@ public class HelloController implements Initializable {
     @FXML
     private Label lblGainPerteAdv;
 
+    @FXML
+    private ImageView imgCraqueleur;
+    @FXML
+    private ImageView imgTofu;
+    @FXML
+    private ImageView imgBouftou;
+    @FXML
+    private ImageView imgZoneMonstre;
+    @FXML
+    private ImageView imgMonstreBouftou;
+    @FXML
+    private ImageView imgMonstreTofu;
+    @FXML
+    private ImageView imgMonstreCraqueleur;
+    @FXML
+    private ImageView imgBoss;
+    @FXML
+    private ImageView imgAleaRencontre;
+    @FXML
+    private ImageView imgPotionRappel;
+    @FXML
+    private ImageView imgZoneAstrub;
+    @FXML
+    private ImageView imgAttaque;
+    @FXML
+    private ImageView imgDefense;
+    @FXML
+    private ImageView imgFuite;
+    @FXML
+    private ImageView imgSoin;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clearAll();
         apChoix.setVisible(true);
-
+        unPointVingtNeuf = true;
         lvClasses.getItems().add("Sram");
         lvClasses.getItems().add("Iop");
         lvClasses.getItems().add("Cra");
@@ -284,7 +316,7 @@ public class HelloController implements Initializable {
         p = new Personnage(txtNomPerso.getText(), c);
         clearAll();
         apChoixAction.setVisible(true);
-        imagePerso = new Image(getClass().getResource("/Images/Classe/" + p.getClasseDuPerso().getLogoURL()).toExternalForm());
+        imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
     }
     public void clearAll(){
         apBouftou.setVisible(false);
@@ -331,46 +363,14 @@ public class HelloController implements Initializable {
         hbSorts.setVisible(true);
         apCombatPersonnages.setVisible(true);
     }
-    public void clickFuite(MouseEvent mouseEvent) {
-
-        int probaFuite = alea();
-        if (p.getFuite()<probaFuite) {
-            clearAll();
-            apChoixAction.setVisible(true);
-            return;
-        }
-        attaqueMonstre(m);
-    }
-
-    public void clickGoToBouftou(MouseEvent mouseEvent) {
-        clearAll();
-        intNumberZone = 2;
-        apBouftou.setVisible(true);
-        apZoneMonstre.setVisible(true);
 
 
-    }
 
-    public void clickGoToTofu(MouseEvent mouseEvent) {
-        clearAll();
-        intNumberZone = 1;
-        apTofu.setVisible(true);
-        apZoneMonstre.setVisible(true);
 
-    }
 
-    public void clickGoToCraqueleur(MouseEvent mouseEvent) {
-        clearAll();
-        intNumberZone = 3;
-        apCraqueleur.setVisible(true);
-        apZoneMonstre.setVisible(true);
 
-    }
 
-    public void clickGoToAstrub(MouseEvent mouseEvent) {
-        clearAll();
-        apChoixAction.setVisible(true);
-    }
+
     public int alea()
     {
         return (int)(Math.random() * 101);  // 0 to 100
@@ -392,46 +392,7 @@ public class HelloController implements Initializable {
     {
         lblTexte.setText(Integer.toString(intTexte));
     }
-    public void clickGoToAlea(MouseEvent mouseEvent) {
-        //Event croiser un monstre ou trouver un coffre
 
-        Image imageAdversaire;
-        if (true) {
-            clearAll();
-            combatAff();
-            imgPersonnageCbt.setImage(imagePerso);
-            if (intNumberZone == 1) {
-                apTofu.setVisible(true);
-                m = aleatoireMonstre(monstreTofuMineur, monstreTofu, monstreTofuMajeur);
-            } else if (intNumberZone == 2) {
-                apBouftou.setVisible(true);
-                m = aleatoireMonstre(monstreBouftouMineur, monstreBouftou, monstreBouftouMajeur);
-            } else if (intNumberZone == 3) {
-                apCraqueleur.setVisible(true);
-                m = aleatoireMonstre(monstreCraqueleurMineur, monstreCraqueleur, monstreCraqueleurMajeur);
-            } else {
-                m = aleatoireMonstre(monstreCraqueleurRoyal, monstreBouftouRoyal, monstreTofuRoyal);
-            }
-            imageAdversaire = new Image(getClass().getResource("/Images/"+m.getImg()).toExternalForm());
-            m.setPvActuel(m.getPvMax());
-            imgAdversaire.setImage(imageAdversaire);
-            int intPvRestantHero = p.getStatVita();
-            int intPvRestantAdvs = m.getPvMax();
-            lblNomDuMonstre.setText(m.getNom().toUpperCase());
-            lblNomDuPersonnage.setText(p.getNom().toUpperCase());
-            writeRapideInt(lblPVPerso, intPvRestantHero);
-            writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
-            writeRapideInt(lblPVAdv, intPvRestantAdvs);
-            writeRapideInt(lblPVMaxAdv, intPvRestantAdvs);
-        }
-        else
-        {
-            System.out.println("Trouver le coffre");
-        }
-    }
-
-    public void clickGoToBoss(MouseEvent mouseEvent) {
-    }
 
     public void clickGoToMarchand(MouseEvent mouseEvent) {
     }
@@ -466,10 +427,10 @@ public class HelloController implements Initializable {
     }
     public void setClasse(ClassePerso classe) {
 
-        Image imageLogo = new Image(getClass().getResource("/Images/Logo/" + classe.getLogoURL()).toExternalForm());
-        Image imageBonus = new Image(getClass().getResource("/Images/stat" + classe.getBonus() + ".png").toExternalForm());
-        Image imageMalus = new Image(getClass().getResource("/Images/stat" + classe.getMalus() + ".png").toExternalForm());
-        Image imagePerso = new Image(getClass().getResource("/Images/Classe/" + classe.getLogoURL()).toExternalForm());
+        Image imageLogo = new Image(getClass().getResource("/Images/Logo/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
+        Image imageBonus = new Image(getClass().getResource("/Images/stat" +deuxPointZero+ classe.getBonus() + ".png").toExternalForm());
+        Image imageMalus = new Image(getClass().getResource("/Images/stat" +deuxPointZero+ classe.getMalus() + ".png").toExternalForm());
+        Image imagePerso = new Image(getClass().getResource("/Images/Classe/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
         txtClasses.setPromptText(classe.getDescription());
         Font f = new Font("Franklin Gothic Medium", 18);
         txtClasses.setFont(f);
@@ -529,7 +490,117 @@ public class HelloController implements Initializable {
 
         return;
     }
-    public void clickAttaque(MouseEvent mouseEvent) {
+
+
+
+
+
+    public void changeImageViewImg(ImageView imgView, String linkImage){
+        imgView.setImage(new Image(getClass().getResource(linkImage).toExternalForm()));
+    }
+    public void setImageMonstre(Monstre m, String linkImage)
+    {
+        m.setImg(getClass().getResource(linkImage).toExternalForm());
+    }
+    public void clickChangeVersion(MouseEvent mouseEvent) {
+        if(unPointVingtNeuf == true)
+        {
+            unPointVingtNeuf = false;
+            deuxPointZero = "deuxPointZero/";
+        }
+        else
+        {
+            unPointVingtNeuf = true;
+            deuxPointZero = "";
+        }
+        changeImageViewImg(imgZoneAstrub, "/Images/"+deuxPointZero+"zoneChoix.PNG");
+        changeImageViewImg(imgZoneMonstre, "/Images/"+deuxPointZero+"zoneMonstre.PNG");
+        changeImageViewImg(imgMonstreBouftou, "/Images/"+deuxPointZero+"monstreBouftou.PNG");
+        changeImageViewImg(imgMonstreTofu, "/Images/"+deuxPointZero+"monstreTofu.PNG");
+        changeImageViewImg(imgMonstreCraqueleur, "/Images/"+deuxPointZero+"monstreCraqueleur.PNG");
+        changeImageViewImg(imgBouftou, "/Images/"+deuxPointZero+"zoneBouftou.PNG");
+        changeImageViewImg(imgTofu, "/Images/"+deuxPointZero+"zoneTofu.PNG");
+        changeImageViewImg(imgCraqueleur, "/Images/"+deuxPointZero+"zoneCraqueleur.PNG");
+        /*
+        setImageMonstre(monstreBouftou, deuxPointZero+"monstreBouftou.PNG" );
+        setImageMonstre(monstreTofu, deuxPointZero+"monstreTofu.PNG" );
+        setImageMonstre(monstreCraqueleur, deuxPointZero+"monstreCraqueleur.PNG" );
+        */
+    }
+
+    @FXML
+    public void clickGoToBouftou(Event event) {
+        clearAll();
+        intNumberZone = 2;
+        apBouftou.setVisible(true);
+        apZoneMonstre.setVisible(true);
+    }
+
+    @FXML
+    public void clickGoToTofu(Event event) {
+        clearAll();
+        intNumberZone = 1;
+        apTofu.setVisible(true);
+        apZoneMonstre.setVisible(true);
+    }
+
+    @FXML
+    public void clickGoToCraqueleur(Event event) {
+        clearAll();
+        intNumberZone = 3;
+        apCraqueleur.setVisible(true);
+        apZoneMonstre.setVisible(true);
+    }
+
+    @FXML
+    public void clickGoToBoss(Event event) {
+    }
+
+    @FXML
+    public void clickGoToAlea(Event event) {
+        Image imageAdversaire;
+        if (true) {
+            clearAll();
+            combatAff();
+            imgPersonnageCbt.setImage(imagePerso);
+            if (intNumberZone == 1) {
+                apTofu.setVisible(true);
+                m = aleatoireMonstre(monstreTofuMineur, monstreTofu, monstreTofuMajeur);
+            } else if (intNumberZone == 2) {
+                apBouftou.setVisible(true);
+                m = aleatoireMonstre(monstreBouftouMineur, monstreBouftou, monstreBouftouMajeur);
+            } else if (intNumberZone == 3) {
+                apCraqueleur.setVisible(true);
+                m = aleatoireMonstre(monstreCraqueleurMineur, monstreCraqueleur, monstreCraqueleurMajeur);
+            } else {
+                m = aleatoireMonstre(monstreCraqueleurRoyal, monstreBouftouRoyal, monstreTofuRoyal);
+            }
+            imageAdversaire = new Image(getClass().getResource("/Images/"+deuxPointZero+m.getImg()).toExternalForm());
+            m.setPvActuel(m.getPvMax());
+            imgAdversaire.setImage(imageAdversaire);
+            int intPvRestantHero = p.getStatVita();
+            int intPvRestantAdvs = m.getPvMax();
+            lblNomDuMonstre.setText(m.getNom().toUpperCase());
+            lblNomDuPersonnage.setText(p.getNom().toUpperCase());
+            writeRapideInt(lblPVPerso, intPvRestantHero);
+            writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
+            writeRapideInt(lblPVAdv, intPvRestantAdvs);
+            writeRapideInt(lblPVMaxAdv, intPvRestantAdvs);
+        }
+        else
+        {
+            System.out.println("Trouver le coffre");
+        }
+    }
+
+    @FXML
+    public void clickGoToAstrub(Event event) {
+        clearAll();
+        apChoixAction.setVisible(true);
+    }
+
+    @FXML
+    public void clickAttaque(Event event) {
         m.perdrePDV(p.getAttaque());
         writeRapideInt(lblPVAdv, m.getPvActuel());
         if(m.getPvActuel() <= 0)
@@ -541,20 +612,29 @@ public class HelloController implements Initializable {
             return;
         }
         attaqueMonstre(m);
-
     }
 
-    public void clickDefense(MouseEvent mouseEvent) {
+    @FXML
+    public void clickDefense(Event event) {
     }
 
-    public void clickSoin(MouseEvent mouseEvent) {
+    @FXML
+    public void clickFuite(Event event) {
+        int probaFuite = alea();
+        if (p.getFuite()<probaFuite) {
+            clearAll();
+            apChoixAction.setVisible(true);
+            return;
+        }
+        attaqueMonstre(m);
+    }
+
+    @FXML
+    public void clickSoin(Event event) {
         p.gainPDV();
         int gainPerso = p.gainPDV();
         lblGainPertePerso.setText("+" + Integer.toString(gainPerso));
         writeRapideInt(lblPVPerso, p.getStatVita());
         lblGainPerteAdv.setText("");
-
-
-       // attaqueMonstre(m);
     }
 }
