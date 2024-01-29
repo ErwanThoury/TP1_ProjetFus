@@ -443,9 +443,6 @@
                                  <image>
                                     <Image url="@../../Images/monstreBouftou.png" />
                                  </image>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
                               </ImageView>
                            </children>
                            <HBox.margin>
@@ -458,7 +455,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apChoix" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgFond" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/zoneMenu.PNG" />
                      </image>
@@ -476,7 +473,7 @@
                                  <effect>
                                     <DropShadow height="40.0" radius="19.5" width="40.0">
                                        <color>
-                                          <Color green="0.4868420958518982" blue="0.016228070482611656" />
+                                          <Color green="1.0" blue="0.03333333507180214" />
                                        </color>
                                     </DropShadow>
                                  </effect>
@@ -521,7 +518,7 @@
                         <Image url="@../../Images/interfaceChoix.PNG" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="572.0" layoutY="453.0" onMouseClicked="#onClickCreatePerso" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgJouer" fitHeight="150.0" fitWidth="200.0" layoutX="572.0" layoutY="453.0" onMouseClicked="#onClickCreatePerso" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/interfaceValider.PNG" />
                      </image>

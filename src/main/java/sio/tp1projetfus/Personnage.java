@@ -143,6 +143,7 @@ public class Personnage {
         return statTerre;
     }
 
+
     public int getStatFeu() {
         return statFeu;
     }

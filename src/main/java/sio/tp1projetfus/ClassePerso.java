@@ -9,6 +9,7 @@ public class ClassePerso {
     private String description;
     private String bonus;
     private String malus;
+    private static String deuxPointZero = "";
     public ClassePerso(String nom, String logoURL, String description, String bonus, String malus) {
         this.nom = nom;
         this.logoURL = logoURL;
@@ -17,7 +18,14 @@ public class ClassePerso {
         this.malus = malus;
 
     }
+    public static void setDeuxPointZero(String laDeuxPointZero) {
+        deuxPointZero = laDeuxPointZero;
 
+    }
+    public void resetImage()
+    {
+        this.logoURL = deuxPointZero + this.logoURL;
+    }
     public String getNom() {
         return nom;
     }

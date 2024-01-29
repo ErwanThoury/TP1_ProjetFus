@@ -10,6 +10,7 @@ public class Monstre {
     private int coupCritique;
     private int kamaGagneMax;
     private int kamaGagneMin;
+    private static String deuxPointZero = "";
     public Monstre(String unNom, String unImg, int pvMax, int attaque, int defense, int critique, int kamaGagneMin, int kamaGagneMax){
         this.img = unImg;
         this.nom = unNom;
@@ -22,6 +23,13 @@ public class Monstre {
         this.kamaGagneMax = kamaGagneMax;
     }
 
+    public static void setDeuxPointZero(String laDeuxPointZero) {
+        deuxPointZero = laDeuxPointZero;
+    }
+    public void resetImage()
+    {
+        this.img = deuxPointZero + this.img;
+    }
     public String getNom() {
         return nom;
     }

@@ -293,6 +293,13 @@ public class HelloController implements Initializable {
     private ImageView imgFuite;
     @FXML
     private ImageView imgSoin;
+    private boolean verouilleChange = false;
+    private boolean estDansCombat;
+    private Monstre monstreCourant;
+    @FXML
+    private ImageView imgJouer;
+    @FXML
+    private ImageView imgFond;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -311,11 +318,14 @@ public class HelloController implements Initializable {
         lvClasses.getItems().add("Eniripsa");
         lvClasses.getItems().add("Enutrof");
         lvClasses.getItems().add("Ecaflip");
+        estDansCombat = false;
     }
+    @FXML
     public void onClickCreatePerso(MouseEvent mouseEvent) {
         p = new Personnage(txtNomPerso.getText(), c);
         clearAll();
         apChoixAction.setVisible(true);
+        verouilleChange = true;
         imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
     }
     public void clearAll(){
@@ -427,10 +437,13 @@ public class HelloController implements Initializable {
     }
     public void setClasse(ClassePerso classe) {
 
-        Image imageLogo = new Image(getClass().getResource("/Images/Logo/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
-        Image imageBonus = new Image(getClass().getResource("/Images/stat" +deuxPointZero+ classe.getBonus() + ".png").toExternalForm());
-        Image imageMalus = new Image(getClass().getResource("/Images/stat" +deuxPointZero+ classe.getMalus() + ".png").toExternalForm());
-        Image imagePerso = new Image(getClass().getResource("/Images/Classe/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
+        //Image imageLogo = new Image(getClass().getResource("/Images/Logo/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
+        Image imageLogo = new Image(getClass().getResource("/Images/" + deuxPointZero + "Logo/" + classe.getLogoURL()).toExternalForm());
+        Image imageBonus = new Image(getClass().getResource("/Images/stat" + classe.getBonus() + ".png").toExternalForm());
+        Image imageMalus = new Image(getClass().getResource("/Images/stat" + classe.getMalus() + ".png").toExternalForm());
+        //Image imagePerso = new Image(getClass().getResource("/Images/Classe/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
+        Image imagePerso = new Image(getClass().getResource("/Images/" + deuxPointZero + "Classe/"+ classe.getLogoURL()).toExternalForm());
+
         txtClasses.setPromptText(classe.getDescription());
         Font f = new Font("Franklin Gothic Medium", 18);
         txtClasses.setFont(f);
@@ -503,6 +516,8 @@ public class HelloController implements Initializable {
         m.setImg(getClass().getResource(linkImage).toExternalForm());
     }
     public void clickChangeVersion(MouseEvent mouseEvent) {
+        if(verouilleChange)
+            changeImageViewImg(imgPersonnage, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
         if(unPointVingtNeuf == true)
         {
             unPointVingtNeuf = false;
@@ -516,11 +531,19 @@ public class HelloController implements Initializable {
         changeImageViewImg(imgZoneAstrub, "/Images/"+deuxPointZero+"zoneChoix.PNG");
         changeImageViewImg(imgZoneMonstre, "/Images/"+deuxPointZero+"zoneMonstre.PNG");
         changeImageViewImg(imgMonstreBouftou, "/Images/"+deuxPointZero+"monstreBouftou.PNG");
-        changeImageViewImg(imgMonstreTofu, "/Images/"+deuxPointZero+"monstreTofu.PNG");
+        changeImageViewImg(imgMonstreTofu, "/Images/"+deuxPointZero+"monstreTofuMineur.PNG");
         changeImageViewImg(imgMonstreCraqueleur, "/Images/"+deuxPointZero+"monstreCraqueleur.PNG");
         changeImageViewImg(imgBouftou, "/Images/"+deuxPointZero+"zoneBouftou.PNG");
         changeImageViewImg(imgTofu, "/Images/"+deuxPointZero+"zoneTofu.PNG");
         changeImageViewImg(imgCraqueleur, "/Images/"+deuxPointZero+"zoneCraqueleur.PNG");
+        changeImageViewImg(imgJouer,"/Images/"+deuxPointZero+"interfaceValider.PNG");
+        changeImageViewImg(imgFond, "/Images/"+deuxPointZero+"zoneMenu.PNG");
+        if(estDansCombat) {
+            changeImageViewImg(imgAdversaire, "/Images/"+deuxPointZero+m.getImg());
+            changeImageViewImg(imgPersonnageCbt, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
+
+        }
+
         /*
         setImageMonstre(monstreBouftou, deuxPointZero+"monstreBouftou.PNG" );
         setImageMonstre(monstreTofu, deuxPointZero+"monstreTofu.PNG" );
@@ -562,6 +585,7 @@ public class HelloController implements Initializable {
         if (true) {
             clearAll();
             combatAff();
+            estDansCombat = true;
             imgPersonnageCbt.setImage(imagePerso);
             if (intNumberZone == 1) {
                 apTofu.setVisible(true);
@@ -609,6 +633,8 @@ public class HelloController implements Initializable {
             p.gainKama(gain);
             clearAll();
             apChoixAction.setVisible(true);
+            estDansCombat = false;
+
             return;
         }
         attaqueMonstre(m);
@@ -624,6 +650,7 @@ public class HelloController implements Initializable {
         if (p.getFuite()<probaFuite) {
             clearAll();
             apChoixAction.setVisible(true);
+            estDansCombat = false;
             return;
         }
         attaqueMonstre(m);
@@ -637,4 +664,6 @@ public class HelloController implements Initializable {
         writeRapideInt(lblPVPerso, p.getStatVita());
         lblGainPerteAdv.setText("");
     }
+
+
 }
