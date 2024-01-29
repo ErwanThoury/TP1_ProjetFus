@@ -3,10 +3,7 @@ package sio.tp1projetfus;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -308,6 +305,14 @@ public class HelloController implements Initializable {
     private ImageView imgBarreDuHaut;
     @FXML
     private ImageView imgBarreDuBas;
+    @FXML
+    private ImageView imgPointBleu;
+    @FXML
+    private ImageView imgPointMarron;
+    @FXML
+    private ImageView imgPointRouge;
+    @FXML
+    private ImageView imgFondPerso;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -414,10 +419,10 @@ public class HelloController implements Initializable {
         lblTexte.setText(Integer.toString(intTexte));
     }
 
-
+    @FXML
     public void clickGoToMarchand(MouseEvent mouseEvent) {
     }
-
+    @FXML
     public void clickGoToPerso(MouseEvent mouseEvent) {
         clearAll();
         apMaison.setVisible(true);
@@ -427,6 +432,7 @@ public class HelloController implements Initializable {
         lblEau.setText(Integer.toString((p.getStatEau())));
         lblVitaMax.setText(Integer.toString((p.getStatVitaMax())));
         lblVita.setText(Integer.toString((p.getStatVita())));
+        imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
         imgPersonnage.setImage(imagePerso);
         lblDef.setText((Integer.toString(p.getDefense())));
         lblAttaque.setText(Integer.toString(p.getAttaque()));
@@ -437,7 +443,7 @@ public class HelloController implements Initializable {
         lblSoin.setText(Integer.toString(p.getSoin()));
         writeRapideInt(lblKama, p.getNombreKama());
     }
-
+    @FXML
     public void clickGoToZaap(MouseEvent mouseEvent) {
         clearAll();
         apAstrub.setVisible(true);
@@ -527,8 +533,7 @@ public class HelloController implements Initializable {
         m.setImg(getClass().getResource(linkImage).toExternalForm());
     }
     public void clickChangeVersion(MouseEvent mouseEvent) {
-        if(verouilleChange)
-            changeImageViewImg(imgPersonnage, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
+
         if(unPointVingtNeuf == true)
         {
             unPointVingtNeuf = false;
@@ -552,7 +557,14 @@ public class HelloController implements Initializable {
         if(estDansCombat) {
             changeImageViewImg(imgAdversaire, "/Images/"+deuxPointZero+m.getImg());
             changeImageViewImg(imgPersonnageCbt, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
+            changeImageViewImg(imgDefense, "/Images/"+deuxPointZero+"combatDefenseEau.png");
+            changeImageViewImg(imgFuite, "/Images/"+deuxPointZero+"combatFuiteAir.png");
+            changeImageViewImg(imgAttaque, "/Images/"+deuxPointZero+"combatAttaqueTerre.png");
+            changeImageViewImg(imgSoin, "/Images/"+deuxPointZero+"combatSoinFeu.png");
 
+        }
+        if(verouilleChange) {
+            changeImageViewImg(imgPersonnage, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
         }
         Event e = new Event(null);
         clickChangeClasse(e);
@@ -560,6 +572,11 @@ public class HelloController implements Initializable {
         changeImageViewImg(imgFlecheRouge, "/Images/"+deuxPointZero+"FlecheRouge.png");
         changeImageViewImg(imgBarreDuHaut,"/Images/"+deuxPointZero+"barreWindows.png");
         changeImageViewImg(imgBarreDuBas,"/Images/"+deuxPointZero+"fond.png");
+        changeImageViewImg(imgPointBleu, "/Images/"+deuxPointZero+"pointBleu.png");
+        changeImageViewImg(imgPointMarron, "/Images/"+deuxPointZero+"pointMarron.png");
+        changeImageViewImg(imgPointRouge, "/Images/"+deuxPointZero+"pointRouge.png");
+        changeImageViewImg(imgFondPerso, "/Images/"+deuxPointZero+"zonePersonnage.png");
+
         /*
         setImageMonstre(monstreBouftou, deuxPointZero+"monstreBouftou.PNG" );
         setImageMonstre(monstreTofu, deuxPointZero+"monstreTofu.PNG" );
@@ -602,6 +619,7 @@ public class HelloController implements Initializable {
             clearAll();
             combatAff();
             estDansCombat = true;
+            imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
             imgPersonnageCbt.setImage(imagePerso);
             if (intNumberZone == 1) {
                 apTofu.setVisible(true);
@@ -620,6 +638,10 @@ public class HelloController implements Initializable {
             imgAdversaire.setImage(imageAdversaire);
             int intPvRestantHero = p.getStatVita();
             int intPvRestantAdvs = m.getPvMax();
+            changeImageViewImg(imgDefense, "/Images/"+deuxPointZero+"combatDefenseEau.png");
+            changeImageViewImg(imgFuite, "/Images/"+deuxPointZero+"combatFuiteAir.png");
+            changeImageViewImg(imgAttaque, "/Images/"+deuxPointZero+"combatAttaqueTerre.png");
+            changeImageViewImg(imgSoin, "/Images/"+deuxPointZero+"combatSoinFeu.png");
             lblNomDuMonstre.setText(m.getNom().toUpperCase());
             lblNomDuPersonnage.setText(p.getNom().toUpperCase());
             writeRapideInt(lblPVPerso, intPvRestantHero);

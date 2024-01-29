@@ -113,7 +113,7 @@
             </AnchorPane>
             <AnchorPane fx:id="apMaison" prefHeight="600.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgFondPerso" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/zonePersonnage.PNG" />
                      </image>
@@ -200,7 +200,7 @@
                         <Image url="@../../Images/Classe/sadida.png" />
                      </image>
                   </ImageView>
-                  <VBox layoutX="497.0" layoutY="86.0" prefHeight="400.0" prefWidth="398.0">
+                  <VBox layoutX="468.0" layoutY="83.0" prefHeight="400.0" prefWidth="398.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
                            <children>
@@ -229,7 +229,7 @@
                                     <Image url="@../../Images/statSoin.png" />
                                  </image>
                                  <HBox.margin>
-                                    <Insets right="20.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </ImageView>
                               <Label fx:id="lblSoin" text="100" textFill="#4a4926">
@@ -340,21 +340,24 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox layoutX="337.0" layoutY="486.0" prefHeight="50.0" prefWidth="210.0">
+                  <HBox layoutX="592.0" layoutY="471.0" prefHeight="40.0" prefWidth="210.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Images/Kama.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="lblKama" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="150.0" text="1000">
+                        <Label fx:id="lblKama" alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="150.0" text="1000">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font name="Arial" size="35.0" />
+                              <Font name="Arial Bold" size="35.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Kama.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ImageView>
                      </children>
                   </HBox>
                </children>
@@ -366,15 +369,15 @@
                         <Image url="@../../Images/zoneChoix.PNG" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="716.0" layoutY="215.0" onMouseClicked="#clickGoToMarchand" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPointBleu" fitHeight="25.0" fitWidth="25.0" layoutX="716.0" layoutY="215.0" onMouseClicked="#clickGoToMarchand" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/pointBleu.png" />
                      </image></ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="135.0" layoutY="364.0" onMouseClicked="#clickGoToPerso" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPointMarron" fitHeight="25.0" fitWidth="25.0" layoutX="135.0" layoutY="364.0" onMouseClicked="#clickGoToPerso" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/pointMarron.png" />
                      </image></ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="438.0" layoutY="190.0" onMouseClicked="#clickGoToZaap" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPointRouge" fitHeight="25.0" fitWidth="25.0" layoutX="438.0" layoutY="190.0" onMouseClicked="#clickGoToZaap" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/pointRouge.png" />
                      </image></ImageView>
