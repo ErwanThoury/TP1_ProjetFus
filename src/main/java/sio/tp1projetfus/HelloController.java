@@ -49,15 +49,15 @@ public class HelloController implements Initializable {
     //---------------------------------------------------------------------------------
     Monstre monstreTofuMineur = new Monstre("Tofu furtif"
             , "monstreTofuMineur.png"
-            , 5
             , 10
-            , 0
+            , 10
+            , 3
             , 30
             , 12
             , 20);
     Monstre monstreTofu = new Monstre("Tofukaz agile"
             , "monstreTofu.png"
-            , 10
+            , 15
             , 10
             , 5
             , 30
@@ -92,7 +92,7 @@ public class HelloController implements Initializable {
             , 20
             , 50
             , 100);
-    Monstre monstreBouftou = new Monstre("Bouftou affamé"
+    Monstre monstreBouftou = new Monstre("Bouftou assoupi"
             , "monstreBouftou.png"
             , 75
             , 10
@@ -254,6 +254,13 @@ public class HelloController implements Initializable {
     private Label lblNomDuPersonnage;
     @FXML
     private Label lblNomDuMonstre;
+    Monstre m;
+    @FXML
+    private Label lblKama;
+    @FXML
+    private Label lblGainPertePerso;
+    @FXML
+    private Label lblGainPerteAdv;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -295,6 +302,11 @@ public class HelloController implements Initializable {
 
 
     }
+    public int randInter(int a, int b) {
+        int randomNumber = (int) (Math.random() * (b - a + 1)) + a;
+
+        return randomNumber;
+    }
     public void combatClear() {
         lblPVAdv.setVisible(false);
         lblPVMaxAdv.setVisible(false);
@@ -320,8 +332,14 @@ public class HelloController implements Initializable {
         apCombatPersonnages.setVisible(true);
     }
     public void clickFuite(MouseEvent mouseEvent) {
-        clearAll();
-        apChoixAction.setVisible(true);
+
+        int probaFuite = alea();
+        if (p.getFuite()<probaFuite) {
+            clearAll();
+            apChoixAction.setVisible(true);
+            return;
+        }
+        attaqueMonstre(m);
     }
 
     public void clickGoToBouftou(MouseEvent mouseEvent) {
@@ -376,7 +394,7 @@ public class HelloController implements Initializable {
     }
     public void clickGoToAlea(MouseEvent mouseEvent) {
         //Event croiser un monstre ou trouver un coffre
-        Monstre m;
+
         Image imageAdversaire;
         if (true) {
             clearAll();
@@ -395,11 +413,12 @@ public class HelloController implements Initializable {
                 m = aleatoireMonstre(monstreCraqueleurRoyal, monstreBouftouRoyal, monstreTofuRoyal);
             }
             imageAdversaire = new Image(getClass().getResource("/Images/"+m.getImg()).toExternalForm());
+            m.setPvActuel(m.getPvMax());
             imgAdversaire.setImage(imageAdversaire);
             int intPvRestantHero = p.getStatVita();
             int intPvRestantAdvs = m.getPvMax();
-            lblNomDuMonstre.setText(m.getNom());
-            lblNomDuPersonnage.setText(p.getNom());
+            lblNomDuMonstre.setText(m.getNom().toUpperCase());
+            lblNomDuPersonnage.setText(p.getNom().toUpperCase());
             writeRapideInt(lblPVPerso, intPvRestantHero);
             writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
             writeRapideInt(lblPVAdv, intPvRestantAdvs);
@@ -434,6 +453,7 @@ public class HelloController implements Initializable {
         lblEsquive.setText(Integer.toString(p.getEsquive()));
         lblProspection.setText(Integer.toString(p.getProspection()));
         lblSoin.setText(Integer.toString(p.getSoin()));
+        writeRapideInt(lblKama, p.getNombreKama());
     }
 
     public void clickGoToZaap(MouseEvent mouseEvent) {
@@ -501,5 +521,40 @@ public class HelloController implements Initializable {
         }
     }
 
+    public void attaqueMonstre(Monstre monstreCombat)
+    {
+        p.perdrePDV(monstreCombat.getAttaque());
+        writeRapideInt(lblPVPerso, p.getStatVita());
+        lblGainPertePerso.setText("-" + Integer.toString(p.getAttaque()));
 
+        return;
+    }
+    public void clickAttaque(MouseEvent mouseEvent) {
+        m.perdrePDV(p.getAttaque());
+        writeRapideInt(lblPVAdv, m.getPvActuel());
+        if(m.getPvActuel() <= 0)
+        {
+            int gain = randInter(m.getKamaGagneMin(),m.getKamaGagneMax());
+            p.gainKama(gain);
+            clearAll();
+            apChoixAction.setVisible(true);
+            return;
+        }
+        attaqueMonstre(m);
+
+    }
+
+    public void clickDefense(MouseEvent mouseEvent) {
+    }
+
+    public void clickSoin(MouseEvent mouseEvent) {
+        p.gainPDV();
+        int gainPerso = p.gainPDV();
+        lblGainPertePerso.setText("+" + Integer.toString(gainPerso));
+        writeRapideInt(lblPVPerso, p.getStatVita());
+        lblGainPerteAdv.setText("");
+
+
+       // attaqueMonstre(m);
+    }
 }

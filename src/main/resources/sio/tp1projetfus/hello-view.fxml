@@ -340,6 +340,23 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <HBox layoutX="337.0" layoutY="486.0" prefHeight="50.0" prefWidth="210.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/Kama.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblKama" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="150.0" text="1000">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Arial" size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="apChoixAction" prefHeight="600.0" prefWidth="900.0">
@@ -376,7 +393,7 @@
                                           <Image url="@../../Images/interfaceChoix.PNG" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
+                                    <Label fx:id="lblGainPertePerso" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>
@@ -410,7 +427,7 @@
                                           <Image url="@../../Images/interfaceChoix.PNG" />
                                        </image>
                                     </ImageView>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
+                                    <Label fx:id="lblGainPerteAdv" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="64.0" prefHeight="50.0" prefWidth="200.0" text="+ 100" textFill="#00dd29">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>
@@ -447,7 +464,7 @@
                      </image>
                   </ImageView>
                   <ImageView fx:id="imgLogoClasse" fitHeight="150.0" fitWidth="150.0" layoutX="265.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
-                  <ListView fx:id="lvClasses" fixedCellSize="-12.0" layoutX="39.0" layoutY="50.0" onMouseClicked="#clickChangeClasse" prefHeight="280.0" prefWidth="189.0" />
+                  <ListView fx:id="lvClasses" fixedCellSize="-12.0" layoutX="45.0" layoutY="51.0" onMouseClicked="#clickChangeClasse" prefHeight="280.0" prefWidth="189.0" />
                   <VBox layoutX="84.0" layoutY="390.0" prefHeight="110.0" prefWidth="110.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="100.0">
@@ -456,6 +473,13 @@
                                  <image>
                                     <Image url="@../../Images/FlecheVerte.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow height="40.0" radius="19.5" width="40.0">
+                                       <color>
+                                          <Color green="0.4868420958518982" blue="0.016228070482611656" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
                               </ImageView>
                               <ImageView fx:id="imgBonusStat" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -470,6 +494,13 @@
                                  <image>
                                     <Image url="@../../Images/FlecheRouge.png" />
                                  </image>
+                                 <effect>
+                                    <DropShadow height="40.0" radius="19.5" width="40.0">
+                                       <color>
+                                          <Color red="1.0" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
                               </ImageView>
                               <ImageView fx:id="imgMalusStat" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -526,6 +557,13 @@
                      <image>
                         <Image url="@../../Images/statVita.png" />
                      </image>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                   <Label fx:id="lblPVPerso" alignment="CENTER" prefHeight="50.0" prefWidth="70.0" text="1000">
                      <font>
@@ -548,21 +586,35 @@
                         <Insets left="20.0" right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickAttaque" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatAttaqueTerre.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color red="0.3815789520740509" green="0.17807017266750336" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickDefense" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatDefenseEau.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color green="0.21485714614391327" blue="0.9399999976158142" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickFuite" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -571,14 +623,28 @@
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color red="0.056578949093818665" green="0.5657894611358643" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#clickSoin" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Images/combatSoinFeu.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color red="0.7236841917037964" green="0.003350389888510108" blue="0.003350389888510108" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                   <Label fx:id="lblPVAdv" alignment="CENTER" prefHeight="50.0" prefWidth="70.0" text="1000">
                      <font>
@@ -605,6 +671,13 @@
                      <image>
                         <Image url="@../../Images/statVita.png" />
                      </image>
+                     <effect>
+                        <DropShadow height="40.0" radius="19.5" width="40.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </children>
             </HBox>

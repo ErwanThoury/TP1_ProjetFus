@@ -1,5 +1,7 @@
 package sio.tp1projetfus;
 
+import javafx.scene.control.Alert;
+
 public class Personnage {
     public String nom;
     private ClassePerso classeDuPerso;
@@ -115,7 +117,24 @@ public class Personnage {
     public ClassePerso getClasseDuPerso() {
         return classeDuPerso;
     }
+    public void perdrePDV(int degat)
+    {
+        degat = degat - this.defense;
+        if (degat < 0)
+            degat = 0;
+        this.statVita -= degat ;
+    }
+    public int gainPDV()
+    {
+        int gain = this.soin;
 
+        if ((gain + this.statVita) >= this.statVitaMax) {
+            this.statVita = this.statVitaMax;
+        }
+        else
+            this.statVita += gain ;
+        return gain;
+    }
     public int getStatAir() {
         return statAir;
     }
@@ -217,5 +236,10 @@ public class Personnage {
         this.prospection += this.statEau * 2;
         this.attaque += this.statTerre * 1.5 + this.statAir * 0.5 + this.statEau * 0.5 + this.statFeu * 0.5;
         this.defense += this.statEau * 1.2 + this.statAir * 0.2 + this.statTerre * 0.2 + this.statFeu * 0.2;
+    }
+
+    public void gainKama(int gain)
+    {
+        this.nombreKama += gain;
     }
 }

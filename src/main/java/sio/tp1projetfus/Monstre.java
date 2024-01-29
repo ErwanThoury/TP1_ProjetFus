@@ -49,4 +49,55 @@ public class Monstre {
     public int getCoupCritique() {
         return coupCritique;
     }
+    public void perdrePDV(int degat)
+    {
+        degat = degat - this.defense;
+        if (degat < 0)
+            degat = 0;
+        this.pvActuel -= degat ;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setPvActuel(int pvActuel) {
+        this.pvActuel = pvActuel;
+    }
+
+    public void setPvMax(int pvMax) {
+        this.pvMax = pvMax;
+    }
+
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setCoupCritique(int coupCritique) {
+        this.coupCritique = coupCritique;
+    }
+
+    public void setKamaGagneMax(int kamaGagneMax) {
+        this.kamaGagneMax = kamaGagneMax;
+    }
+
+    public void setKamaGagneMin(int kamaGagneMin) {
+        this.kamaGagneMin = kamaGagneMin;
+    }
+
+    public int getKamaGagneMax() {
+        return kamaGagneMax;
+    }
+
+    public int getKamaGagneMin() {
+        return kamaGagneMin;
+    }
 }
