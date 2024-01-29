@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -449,9 +451,7 @@ public class HelloController implements Initializable {
         apAstrub.setVisible(true);
     }
 
-    public void fight(){
 
-    }
     public void setClasse(ClassePerso classe) {
 
         //Image imageLogo = new Image(getClass().getResource("/Images/Logo/" +deuxPointZero+ classe.getLogoURL()).toExternalForm());
@@ -518,6 +518,16 @@ public class HelloController implements Initializable {
         writeRapideInt(lblPVPerso, p.getStatVita());
         lblGainPertePerso.setText("-" + Integer.toString(p.getAttaque()));
 
+        lblGainPertePerso.setTextFill(Color.RED);
+        if(p.getStatVita() <= 0)
+        {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Vous êtes mort !");
+            a.showAndWait();
+            initialize(null, null);
+        }
+
+
         return;
     }
 
@@ -527,10 +537,6 @@ public class HelloController implements Initializable {
 
     public void changeImageViewImg(ImageView imgView, String linkImage){
         imgView.setImage(new Image(getClass().getResource(linkImage).toExternalForm()));
-    }
-    public void setImageMonstre(Monstre m, String linkImage)
-    {
-        m.setImg(getClass().getResource(linkImage).toExternalForm());
     }
     public void clickChangeVersion(MouseEvent mouseEvent) {
 
@@ -577,11 +583,6 @@ public class HelloController implements Initializable {
         changeImageViewImg(imgPointRouge, "/Images/"+deuxPointZero+"pointRouge.png");
         changeImageViewImg(imgFondPerso, "/Images/"+deuxPointZero+"zonePersonnage.png");
 
-        /*
-        setImageMonstre(monstreBouftou, deuxPointZero+"monstreBouftou.PNG" );
-        setImageMonstre(monstreTofu, deuxPointZero+"monstreTofu.PNG" );
-        setImageMonstre(monstreCraqueleur, deuxPointZero+"monstreCraqueleur.PNG" );
-        */
     }
 
     @FXML
@@ -610,17 +611,52 @@ public class HelloController implements Initializable {
 
     @FXML
     public void clickGoToBoss(Event event) {
+        clearAll();
+        if (intNumberZone == 1) {
+            apTofu.setVisible(true);
+            m = monstreTofuRoyal;
+        } else if (intNumberZone == 2) {
+            apBouftou.setVisible(true);
+            m = monstreBouftouRoyal;
+        } else if (intNumberZone == 3) {
+            apCraqueleur.setVisible(true);
+            m = monstreCraqueleurRoyal;
+        } else {
+            m = aleatoireMonstre(monstreCraqueleurRoyal, monstreBouftouRoyal, monstreTofuRoyal);
+        }
+        fight(m);
     }
+    public void fight(Monstre m)
+    {
+        Image imageAdversaire;
 
+        combatAff();
+        lblGainPertePerso.setText("");
+        lblGainPerteAdv.setText("");
+        estDansCombat = true;
+        imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
+        imgPersonnageCbt.setImage(imagePerso);
+
+        imageAdversaire = new Image(getClass().getResource("/Images/"+deuxPointZero+m.getImg()).toExternalForm());
+        m.setPvActuel(m.getPvMax());
+        imgAdversaire.setImage(imageAdversaire);
+        int intPvRestantHero = p.getStatVita();
+        int intPvRestantAdvs = m.getPvMax();
+        changeImageViewImg(imgDefense, "/Images/"+deuxPointZero+"combatDefenseEau.png");
+        changeImageViewImg(imgFuite, "/Images/"+deuxPointZero+"combatFuiteAir.png");
+        changeImageViewImg(imgAttaque, "/Images/"+deuxPointZero+"combatAttaqueTerre.png");
+        changeImageViewImg(imgSoin, "/Images/"+deuxPointZero+"combatSoinFeu.png");
+        lblNomDuMonstre.setText(m.getNom().toUpperCase());
+        lblNomDuPersonnage.setText(p.getNom().toUpperCase());
+        writeRapideInt(lblPVPerso, intPvRestantHero);
+        writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
+        writeRapideInt(lblPVAdv, intPvRestantAdvs);
+        writeRapideInt(lblPVMaxAdv, intPvRestantAdvs);
+    }
     @FXML
     public void clickGoToAlea(Event event) {
-        Image imageAdversaire;
+        clearAll();
         if (true) {
-            clearAll();
-            combatAff();
-            estDansCombat = true;
-            imagePerso = new Image(getClass().getResource("/Images/"+deuxPointZero+"Classe/" +  p.getClasseDuPerso().getLogoURL()).toExternalForm());
-            imgPersonnageCbt.setImage(imagePerso);
             if (intNumberZone == 1) {
                 apTofu.setVisible(true);
                 m = aleatoireMonstre(monstreTofuMineur, monstreTofu, monstreTofuMajeur);
@@ -633,21 +669,7 @@ public class HelloController implements Initializable {
             } else {
                 m = aleatoireMonstre(monstreCraqueleurRoyal, monstreBouftouRoyal, monstreTofuRoyal);
             }
-            imageAdversaire = new Image(getClass().getResource("/Images/"+deuxPointZero+m.getImg()).toExternalForm());
-            m.setPvActuel(m.getPvMax());
-            imgAdversaire.setImage(imageAdversaire);
-            int intPvRestantHero = p.getStatVita();
-            int intPvRestantAdvs = m.getPvMax();
-            changeImageViewImg(imgDefense, "/Images/"+deuxPointZero+"combatDefenseEau.png");
-            changeImageViewImg(imgFuite, "/Images/"+deuxPointZero+"combatFuiteAir.png");
-            changeImageViewImg(imgAttaque, "/Images/"+deuxPointZero+"combatAttaqueTerre.png");
-            changeImageViewImg(imgSoin, "/Images/"+deuxPointZero+"combatSoinFeu.png");
-            lblNomDuMonstre.setText(m.getNom().toUpperCase());
-            lblNomDuPersonnage.setText(p.getNom().toUpperCase());
-            writeRapideInt(lblPVPerso, intPvRestantHero);
-            writeRapideInt(lblPVMaxPerso, p.getStatVitaMax());
-            writeRapideInt(lblPVAdv, intPvRestantAdvs);
-            writeRapideInt(lblPVMaxAdv, intPvRestantAdvs);
+            fight(m);
         }
         else
         {
@@ -696,11 +718,13 @@ public class HelloController implements Initializable {
 
     @FXML
     public void clickSoin(Event event) {
-        p.gainPDV();
+
         int gainPerso = p.gainPDV();
         lblGainPertePerso.setText("+" + Integer.toString(gainPerso));
+        lblGainPertePerso.setTextFill(Color.GREEN);
         writeRapideInt(lblPVPerso, p.getStatVita());
-        lblGainPerteAdv.setText("");
+
+        attaqueMonstre(m);
     }
 
 

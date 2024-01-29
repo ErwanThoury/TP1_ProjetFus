@@ -456,7 +456,7 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="apChoix" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane fx:id="apChoix" disable="true" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
                   <ImageView fx:id="imgFond" fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -538,7 +538,7 @@
       </StackPane>
    </center>
    <bottom>
-      <StackPane fx:id="apBarreBasse" prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <StackPane fx:id="apBarreBasse" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="TOP_CENTER">
          <children>
             <ImageView fx:id="imgBarreDuBas" fitHeight="50.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -679,7 +679,7 @@
       </StackPane>
    </bottom>
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="50.0" prefWidth="900.0" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <ImageView fx:id="imgBarreDuHaut" fitHeight="50.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                <image>
