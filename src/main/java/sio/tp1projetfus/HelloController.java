@@ -300,6 +300,14 @@ public class HelloController implements Initializable {
     private ImageView imgJouer;
     @FXML
     private ImageView imgFond;
+    @FXML
+    private ImageView imgFlecheVerte;
+    @FXML
+    private ImageView imgFlecheRouge;
+    @FXML
+    private ImageView imgBarreDuHaut;
+    @FXML
+    private ImageView imgBarreDuBas;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -318,6 +326,9 @@ public class HelloController implements Initializable {
         lvClasses.getItems().add("Eniripsa");
         lvClasses.getItems().add("Enutrof");
         lvClasses.getItems().add("Ecaflip");
+        lvClasses.getSelectionModel().selectFirst();
+        Event e = new Event(null);
+        clickChangeClasse(e);
         estDansCombat = false;
     }
     @FXML
@@ -543,7 +554,12 @@ public class HelloController implements Initializable {
             changeImageViewImg(imgPersonnageCbt, "/Images/"+deuxPointZero+"Classe/"+p.getClasseDuPerso().getLogoURL());
 
         }
-
+        Event e = new Event(null);
+        clickChangeClasse(e);
+        changeImageViewImg(imgFlecheVerte, "/Images/"+deuxPointZero+"FlecheVerte.png");
+        changeImageViewImg(imgFlecheRouge, "/Images/"+deuxPointZero+"FlecheRouge.png");
+        changeImageViewImg(imgBarreDuHaut,"/Images/"+deuxPointZero+"barreWindows.png");
+        changeImageViewImg(imgBarreDuBas,"/Images/"+deuxPointZero+"fond.png");
         /*
         setImageMonstre(monstreBouftou, deuxPointZero+"monstreBouftou.PNG" );
         setImageMonstre(monstreTofu, deuxPointZero+"monstreTofu.PNG" );
